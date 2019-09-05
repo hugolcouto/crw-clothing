@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { MenuItem } from './MenuItem';
+import MenuItem from './MenuItem';
 
 
 export class Directory extends Component {
@@ -49,13 +49,8 @@ export class Directory extends Component {
     render() {
         return (
             <ul className="directory-menu">
-                {this.state.sections.map(item => (
-                    <MenuItem
-                        key={item.id}
-                        size={item.size}
-                        title={item.title}
-                        imageUrl={item.imageUrl}
-                    />
+                {this.state.sections.map(({ id, ...otherSectionProps }) => (
+                    <MenuItem key={id} { ...otherSectionProps } />
                 ))}
             </ul>
         )
