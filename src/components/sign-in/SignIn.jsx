@@ -38,7 +38,7 @@ class SignIn extends Component {
                         type="email"
                         handleChange={this.handleChange}
                         value={this.state.email}
-                        requried
+                        requried={true}
                     />
 
                     <FormInput
@@ -47,7 +47,7 @@ class SignIn extends Component {
                         type="password"
                         handleChange={this.handleChange}
                         value={this.state.password}
-                        requried
+                        requried={true}
                     />
 
                     <CustomButton>Send</CustomButton>
