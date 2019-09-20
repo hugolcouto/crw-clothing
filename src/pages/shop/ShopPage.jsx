@@ -10,8 +10,6 @@ class ShopPage extends Component {
         this.state = {
             collections: SHOP_DATA
         }
-
-        console.table(this.state.SHOP_DATA);
     }
 
     render() {
