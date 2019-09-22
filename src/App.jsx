@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './styles/style.scss';
 
@@ -9,33 +9,30 @@ import { Hats } from './pages/Hats';
 import SignInAndSignUpPage  from './pages/sign-in-and-sign-up/SignInAndSignUpPage';
 import Header from './components/header/Header';
 import ShopPage from './pages/shop/ShopPage';
+import { setCurrentUser } from './redux/user/user-actions';
 
 import { auth, createUserProfileDocument } from './utils/firebase';
 
 class App extends Component {
-    constructor() {
-        super();
 
-        this.state = {
-            currentUser: null
-        }
-    }
 
     unsubscribeFromAuth = null;
 
     componentDidMount() {
+        const { setCurrentUser } = this.props;
+
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
             if (userAuth) {
                 const userRef = await createUserProfileDocument(userAuth);
 
                 userRef.onSnapshot(snapShot => {
-                    this.setState({ currentUser: {
+                    setCurrentUser({
                         id: snapShot.id,
                         ...snapShot.data()
-                    } })
+                    })
                 })
             }
-            this.setState({ currentUser: userAuth });
+            setCurrentUser(userAuth);
         });
     }
 
@@ -45,17 +42,21 @@ class App extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <Header currentUser={this.state.currentUser}/>
+            <div>
+                <Header/>
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/hats" component={Hats} />
                     <Route path="/shop" component={ShopPage} />
                     <Route path="/signin" component={SignInAndSignUpPage} />
                 </Switch>
-            </BrowserRouter>
+            </div>
         )
     }
 }
 
-ReactDOM.render(<App/>, document.getElementById("root"));
+const mapDispatchToProps = dispatch => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(App);
