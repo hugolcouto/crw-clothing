@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-jest": "^24.8.0",
     "firebase": "^6.6.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -13,7 +14,7 @@
     "redux-logger": "^3.0.6"
   },
   "resolutions": {
-    "babel-jest": "24.7.1"
+    "babel-jest": "^24.8.0"
   },
   "scripts": {
     "start": "react-scripts start",

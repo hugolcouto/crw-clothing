@@ -1,4 +1,6 @@
 .custom-button {
+  display: flex;
+  justify-content: center;
   width: auto;
   min-width: 165px;
   height: 50px;
@@ -21,5 +23,30 @@
 
     background-color: white;
     border: 1px solid black;
+  }
+
+  &.google-sign-in {
+    color: white;
+
+    background-color: #4285f4;
+
+    &:hover {
+      background-color: #357ae8;
+      border: none;
+    }
+  }
+
+  &.inverted {
+    color: black;
+
+    background-color: white;
+    border: 1px solid black;
+
+    &:hover {
+      color: white;
+
+      background-color: black;
+      border: none;
+    }
   }
 }
