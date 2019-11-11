@@ -2,8 +2,10 @@ import React from 'react';
 
 import { Directory } from '../components/Directory';
 
-export const Home = ({ history }) => (
+const Home = ({ history }) => (
 	<div className="homepage">
         <Directory/>
     </div>
 )
+
+export default Home;
