@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import './styles/style.scss';
 
 import Home from './pages/Home';
-import Hats from './pages/Hats';
 import Checkout from './components/checkout/Checkout';
 import SignInAndSignUpPage  from './pages/sign-in-and-sign-up/SignInAndSignUpPage';
 import Header from './components/header/Header';

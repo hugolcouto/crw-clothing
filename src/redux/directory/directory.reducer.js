@@ -32,7 +32,7 @@ const INITIAL_STATE = {
         size: "large",
         linkUrl: 'shop/mens'
     }
-]
+  ]
 };
 
 export const directoryReducer = (state = INITIAL_STATE, action) => {
