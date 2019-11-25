@@ -1,3 +1,6 @@
+import styled from 'styled-components';
+
+export const StyledApp = styled.div`
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 * {
   font-family: "Montserrat", sans-serif;
@@ -79,3 +82,5 @@
 .large {
   height: 480px;
 }
+
+`;

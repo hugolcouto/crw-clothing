@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-import './styles/style.scss';
+import { StyledApp } from './styles/app.style';
 
 import Home from './pages/Home';
 import Checkout from './components/checkout/Checkout';
@@ -43,7 +42,7 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <StyledApp>
                 <Header/>
                 <Switch>
                     <Route exact path="/" component={Home} />
@@ -51,7 +50,7 @@ class App extends Component {
                     <Route exact path="/signin" render={() => this.props.currentUser ? (<Redirect to="/" />) : (<SignInAndSignUpPage/>)} />
                     <Route path="/checkout" exact component={Checkout}/>
                 </Switch>
-            </div>
+            </StyledApp>
         )
     }
 }
@@ -61,7 +60,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser
+    currentUser: selectCurrentUser,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
